@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const fs = require('fs');
 
 class Item{
@@ -7,8 +8,6 @@ class Item{
         this.ID = ID
     }
 }
-
-
 class Container{
     constructor(archive){
         this.archive = archive;
@@ -17,8 +16,8 @@ class Container{
     async read(){
         try{
             const contenido = await fs.promises.readFile(this.archive, 'utf-8')
-            const info = JSON.parse(contenido)
-            console.log(info);
+            let json = JSON.parse(contenido)
+            return json;
         }
         catch(error){
             console.error('Error de lectura',error);
@@ -65,13 +64,13 @@ class Container{
     }
     async getAll(){
         let array = await fs.promises.readFile(this.archive, 'utf-8') //LECTURA DEL ARCHIVO
-        // let json = JSON.parse(array);
-        // if(json.length === 0){
-        //     console.log("Archivo vacio");
-        //     return;
-        // }
-        console.log(array)
-        // return json;
+        let json = JSON.parse(array);
+        if(json.length === 0){
+            console.log("Archivo vacio");
+            return;
+        }
+        // console.log(json)
+        return json;
     }
     async deleteById(id){
         try{
@@ -94,12 +93,11 @@ class Container{
     }
 }
 
-let Test = new Item('Test', 10000)
-let TestContainer = new Container('./productos.txt')
 // TestContainer.save(Test);
 // TestContainer.read();
 // TestContainer.getById(2);
-TestContainer.getAll();
+// TestContainer.getAll();
 // TestContainer.deleteById(1);
 // TestContainer.deleteAll();
 
+module.exports = Container;
