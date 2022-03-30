@@ -7,15 +7,15 @@ const app = express();
 
 let Test = new Container('productos.txt')
 
-app.get('/productos', (req, res)=>{
+app.get('/productos', async (req, res)=>{
     res.setHeader('Content-Type', 'application/json');
-    const result = Test.read()
+    const result = await Test.read()
     res.json(result);
 })
 
-app.get('/productoRandom', (req, res)=>{
-    let result = Test.read()
-    let random = Math.floor(Math.random() * result.length + 1)
+app.get('/productoRandom', async (req, res)=>{
+    let result = await Test.read()
+    let random = Math.floor(Math.random() * result.length)
     res.send(result[random]);
 })
 
