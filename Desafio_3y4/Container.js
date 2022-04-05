@@ -36,7 +36,7 @@ class Container{
                 else{
                     item.ID = json[json.length-1].ID + 1;
                 }
-
+                item.price = parseInt(item.price);
                 json.push(item);
                 let NewJson = JSON.stringify(json)
                 fs.promises.writeFile('productos.txt', NewJson)
@@ -71,6 +71,16 @@ class Container{
         }
         // console.log(json)
         return json;
+    }
+    async replace(item){
+        try {
+            let NewJson = item;
+            fs.promises.writeFile('productos.txt', JSON.stringify(NewJson));
+            console.log('Agregado!');
+        }
+        catch(err){
+            console.log('Error guardando', err)
+        }
     }
     async deleteById(id){
         try{

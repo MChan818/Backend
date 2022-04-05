@@ -18,7 +18,8 @@ class Container{
         try{
             const contenido = await fs.promises.readFile(this.archive, 'utf-8')
             const info = JSON.parse(contenido)
-            console.log(info);
+
+            return info;
         }
         catch(error){
             console.error('Error de lectura',error);
@@ -99,7 +100,7 @@ let TestContainer = new Container('./productos.txt')
 // TestContainer.save(Test);
 // TestContainer.read();
 // TestContainer.getById(2);
-TestContainer.getAll();
-// TestContainer.deleteById(1);
+// TestContainer.getAll();
+TestContainer.deleteById(2);
 // TestContainer.deleteAll();
 
