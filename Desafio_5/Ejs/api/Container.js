@@ -1,4 +1,3 @@
-const { json } = require('body-parser');
 const fs = require('fs');
 
 class Item{
@@ -63,11 +62,12 @@ class Container{
     }
     async getAll(){
         let array = await fs.promises.readFile(this.archive, 'utf-8') //LECTURA DEL ARCHIVO
-        let json = JSON.parse(array);
-        if(json.length === 0){
+        if(array.length === 0){
             console.log("Archivo vacio");
-            return;
+            return array;
         }
+        let json = JSON.parse(array);
+        
         // console.log(json)
         return json;
     }
@@ -101,12 +101,5 @@ class Container{
         console.log('Todos los objetos fueron borrados!');
     }
 }
-
-// TestContainer.save(Test);
-// TestContainer.read();
-// TestContainer.getById(2);
-// TestContainer.getAll();
-// TestContainer.deleteById(1);
-// TestContainer.deleteAll();
 
 module.exports = Container;
