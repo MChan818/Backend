@@ -1,0 +1,44 @@
+[
+    {
+        "ID": 1,
+        "timestamp": "8/5/2022 01:17:30",
+        "productos": {}
+    },
+    {
+        "ID": 2,
+        "timestamp": "8/5/2022 01:18:00",
+        "productos": {
+            "title": "Test1",
+            "descripcion": "Este es el primer item",
+            "price": "1111",
+            "codigo": "1",
+            "stock": "1",
+            "thumbnail": "",
+            "ID": 1
+        }
+    },
+    {
+        "ID": 3,
+        "timestamp": "8/5/2022 01:19:17",
+        "productos": [
+            {
+                "title": "Test1",
+                "descripcion": "Este es el primer item",
+                "price": "1111",
+                "codigo": "1",
+                "stock": "1",
+                "thumbnail": "",
+                "ID": 1
+            },
+            {
+                "title": "Test5",
+                "descripcion": "Este es el primer item",
+                "price": "1111",
+                "codigo": "1",
+                "stock": "1",
+                "thumbnail": "",
+                "ID": 3
+            }
+        ]
+    }
+]
